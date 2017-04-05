@@ -1,0 +1,6 @@
+resolver: lts-7.15
+packages:
+- '.'
+extra-deps:
+- haxl-0.5.0.0
+- freer-effects-0.3.0.0

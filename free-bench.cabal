@@ -1,0 +1,85 @@
+name:                free-bench
+version:             0.1.0.0
+synopsis:            Initial project template from stack
+description:         Please see README.md
+
+license:             ISC
+license-file:        LICENSE
+author:              Will Fancher
+maintainer:          elvishjerricco@gmail.com
+copyright:           © 2017 Will Fancher
+homepage:            https://github.com/ElvishJerricco/free-bench
+bug-reports:         https://github.com/ElvishJerricco/free-bench/issues
+
+category:            Test
+build-type:          Simple
+stability:           alpha (experimental)
+cabal-version:       >=1.10
+
+extra-source-files:
+  README.md
+  stack.yaml
+
+source-repository head
+  type:     git
+  location: https://github.com/ElvishJerricco/free-bench
+
+library
+  default-language:  Haskell2010
+  ghc-options:       -Wall -O2
+  hs-source-dirs:    src
+  exposed-modules:   Control.Monad.Free.Ap
+                   , Control.Monad.Trans.Free.Ap
+                   , Control.Applicative.Free.Dave
+  build-depends:     base >= 4.8 && < 5
+                   , kan-extensions
+                   , free
+                   , transformers
+
+benchmark free-bench-criterion
+  type:              exitcode-stdio-1.0
+  default-language:  Haskell2010
+  ghc-options:       -Wall -O2 -threaded -rtsopts -with-rtsopts=-N
+  hs-source-dirs:    src-criterion
+                   , src-bench
+  main-is:           Main.hs
+  other-modules:     Bench.Haxl
+                   , Bench.Haxl.DataSource
+                   , Bench.Freer
+                   , Bench.Free.Church
+                   , Bench.FreeT.Church
+                   , Bench.Free.Church.Ap
+                   , Bench.FreeT.Church.Ap
+                   , Bench.Free.DataSource
+                   , Bench.Free.GADT.DataSource
+  build-depends:     base >= 4.8 && < 5
+                   , free-bench
+                   , criterion >= 1.1
+                   , haxl
+                   , hashable
+                   , free
+                   , freer-effects
+
+benchmark free-bench-weigh
+  type:              exitcode-stdio-1.0
+  default-language:  Haskell2010
+  ghc-options:       -Wall -O2 -threaded -rtsopts -with-rtsopts=-N
+  hs-source-dirs:    src-weigh
+                   , src-bench
+  main-is:           Main.hs
+  other-modules:     Bench.Haxl
+                   , Bench.Haxl.DataSource
+                   , Bench.Freer
+                   , Bench.Free.Church
+                   , Bench.FreeT.Church
+                   , Bench.Free.Church.Ap
+                   , Bench.FreeT.Church.Ap
+                   , Bench.Free.DataSource
+                   , Bench.Free.GADT.DataSource
+  build-depends:     base >= 4.8 && < 5
+                   , free-bench
+                   , weigh
+                   , haxl
+                   , hashable
+                   , free
+                   , freer-effects
